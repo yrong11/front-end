@@ -1,0 +1,49 @@
+.app {
+  text-align: center;
+  margin: 0px;
+}
+.app {
+  text-align: center;
+  margin: 0px;
+}
+
+.header {
+  position: relative;
+  float: left;
+  vertical-align: middle;
+  width: 100%;
+  height:50px;
+  margin-top: 0px;
+  background-color: #001429;
+}
+
+.header ul {
+  list-style: none;
+  margin-top: 12px;
+  padding-right: 170px;
+}
+
+.header li {
+  float: left;
+  height: 100%;
+  margin-right: 90px;
+  text-decoration: none;
+}
+
+
+.link{
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover{
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  background-color: #198fff;
+  padding: 16px;
+  width: 30px;
+  text-decoration: none;
+}
