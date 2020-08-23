@@ -6,8 +6,10 @@
   "scripts": {
     "start": "parcel index.html"
   },
-  "proxy":"http://localhost:8080",
+  "proxy": "http://localhost:8080",
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.8.6",

@@ -1,5 +1,7 @@
 import React from 'react';
 import Product from './Product'
+import {getStores} from '../../utils/actions'
+import './store.css'
 
 class Store extends React.Component {
   constructor(props) {
@@ -11,30 +13,30 @@ class Store extends React.Component {
   componentDidMount() {
     this.getProductsData()
   }
+
   getProductsData = () => {
-    fetch('http://localhost:8080/store', { method: 'GET' })
-      .then((response) => {
-        if (response.ok) {
-          console.log(response.json())
-          return response.json();
-        } else {
-          throw new Error('get products error!')
-        }
-      }).then((json) => {
-        this.setState({
-          products: json
-        })
-      }).catch((e) => {
-        console.log(e)
+    getStores().then((response) => {
+      this.setState({
+        products: response.data
       })
+      console.log(this.state)
+    }).catch((e) => {
+            console.log(e)
+    })
+  }
+
+  createOrder(orderData) {
+
   }
 
   render() {
     const products = this.state.products;
     return (
-      <div>
+      <div className='store'>
         {products.map((item) => (
           <Product
+            key={item.id}
+            item={item}
             id={item.id}
             name={item.name}
             price={item.price}

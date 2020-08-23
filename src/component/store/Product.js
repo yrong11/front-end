@@ -1,15 +1,37 @@
 import React from 'react';
+import './store.css'
+import {addOrder} from '../../utils/actions'
+import {PlusOutlined} from '@ant-design/icons'
 
 class Product extends React.Component {
-  render() {
-    return (
-      <div>
-        <img src={this.props.picURL}></img>
-        <div>
-          <p>{this.props.name}</p>
-          <p>单价{this.props.price}元/{this.props.unit}</p>
-        </div>
 
+  constructor(props) {
+    super(props)
+
+  }
+
+  createOrder = () =>{
+    const data = {
+      proId: this.props.item.id,
+      number: 1,
+      proName: this.props.name,
+      proPrice: this.props.price,
+      proUnit: this.props.unit
+    }
+    addOrder(data)
+  }
+
+  render() {
+    const {item} = this.props
+    console.log(item)
+    return (
+      <div className='product'>
+        <img src={item.picURL}></img>
+        <div>
+          <p>{item.name}</p>
+          <p>单价{item.price}元/{item.unit}</p>
+        </div>
+        <Button icon={<PlusOutlined />} onClick={this.createOrder} />
       </div>
     )
   }

@@ -1,0 +1,12 @@
+.product {
+  width: 25%;
+  border: solid 1px;
+  margin: 6px;
+  height: 250px;
+}
+
+.store{
+  float: left;
+  display: flex;
+  width: 1000px;
+}
