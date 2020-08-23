@@ -31,7 +31,7 @@ class Product extends React.Component {
           <p>{item.name}</p>
           <p>单价{item.price}元/{item.unit}</p>
         </div>
-        <Button icon={<PlusOutlined />} onClick={this.createOrder} />
+        <button icon={<PlusOutlined />} onClick={this.createOrder} />
       </div>
     )
   }

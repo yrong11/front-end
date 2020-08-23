@@ -9,11 +9,14 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
+    "antd": "^4.6.0",
     "axios": "^0.20.0",
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "bootstrap": "^4.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
