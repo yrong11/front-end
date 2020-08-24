@@ -1,20 +1,23 @@
 .app {
   text-align: center;
-  margin: 0px;
-}
-.app {
-  text-align: center;
-  margin: 0px;
+  margin: auto;
+  width: 800px;
+  position: relative;
+  background-color: #f1f2f6;
 }
 
-.header {
-  position: relative;
-  float: left;
-  vertical-align: middle;
-  width: 100%;
-  height:50px;
-  margin-top: 0px;
-  background-color: #001429;
+.link svg{
+  display: flex;
+}
+
+.header{
+  background-color: #282c34;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .header ul {
@@ -44,6 +47,5 @@
 .active {
   background-color: #198fff;
   padding: 16px;
-  width: 30px;
   text-decoration: none;
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import './store.css'
+import {Button,message} from 'antd'
 import {addOrder} from '../../utils/actions'
 import {PlusOutlined} from '@ant-design/icons'
+import { async } from 'regenerator-runtime';
 
 class Product extends React.Component {
 
@@ -10,7 +12,7 @@ class Product extends React.Component {
 
   }
 
-  createOrder = () =>{
+  createOrder = async() =>{
     const data = {
       proId: this.props.item.id,
       number: 1,
@@ -18,7 +20,13 @@ class Product extends React.Component {
       proPrice: this.props.price,
       proUnit: this.props.unit
     }
-    addOrder(data)
+    const response = await addOrder(data)
+    if (response.status == 200){
+      this.handleLoading
+      message.success("添加订单成功！");
+    }else{
+      message.error("添加订单失败！")
+    }
   }
 
   render() {
@@ -26,12 +34,17 @@ class Product extends React.Component {
     console.log(item)
     return (
       <div className='product'>
+        <div className='product-img'>
         <img src={item.picURL}></img>
-        <div>
-          <p>{item.name}</p>
+        </div>
+        <div className='product-info'>
+          <p style={{fontWeight:"bold", fontSize:'18px'}}>{item.name}</p>
           <p>单价{item.price}元/{item.unit}</p>
         </div>
-        <button icon={<PlusOutlined />} onClick={this.createOrder} />
+        <div className='product-add'>
+        <Button shape='circle' size='middle' icon={<PlusOutlined />} onClick={this.createOrder} />
+        </div>
+        
       </div>
     )
   }

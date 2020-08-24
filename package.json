@@ -9,7 +9,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
-    "antd": "^4.6.0",
+    "antd": "^4.5.4",
     "axios": "^0.20.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "bootstrap": "^4.5.2",

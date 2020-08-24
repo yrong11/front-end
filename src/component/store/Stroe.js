@@ -1,6 +1,7 @@
 import React from 'react';
+import { List, Card } from 'antd';
 import Product from './Product'
-import {getStores} from '../../utils/actions'
+import { getStores } from '../../utils/actions'
 import './store.css'
 
 class Store extends React.Component {
@@ -21,27 +22,29 @@ class Store extends React.Component {
       })
       console.log(this.state)
     }).catch((e) => {
-            console.log(e)
+      console.log(e)
     })
   }
 
-  createOrder(orderData) {
-
-  }
-
   render() {
-    const products = this.state.products;
     return (
       <div className='store'>
-        {products.map((item) => (
-          <Product
+        <List
+          grid={{ gutter: 16, column: 4 }}
+          dataSource={this.state.products}
+          renderItem={item => (
+            <List.Item>
+            <Product
             key={item.id}
             item={item}
             id={item.id}
             name={item.name}
             price={item.price}
             unit={item.unit}
-            picURL={item.picURL} />))}
+            picURL={item.picURL} />
+            </List.Item>
+          )}
+        />,
       </div>
     )
   }
