@@ -60,7 +60,6 @@ class AddProduct extends React.Component {
             >
               <Input size='large' />
             </Form.Item>
-
             <Form.Item
               label="价格:"
               name="price"

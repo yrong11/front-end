@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
-import { Button, message, Space, Table } from "antd";
+import { Button, message, Spin, Table } from "antd";
 import { getOrders, deleteOrder } from '../../utils/actions'
 import { async } from 'regenerator-runtime';
 import './order.css'
@@ -11,19 +11,27 @@ class Order extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: []
+      orders: [],
+      isloading: false,
     }
   }
 
   deleteOrder = async (orderId) => {
-    const response = await deleteOrder(orderId)
-    await this.getOrderData()
-    if (response.status == 200) {
-      this.handleLoading
-      message.success("删除订单成功！");
-    } else {
-      message.error("删除订单失败！")
+    this.handleLoading()
+    try{
+      const response = await deleteOrder(orderId)
+      await this.getOrderData()
+      if (response.status == 200) {
+        
+        message.success("删除订单成功！");
+      } else {
+        message.error("删除订单失败！")
+      }
+    }catch(e){
+      message.error("服务器端连接失败！")
     }
+    this.handleLoading()
+    
 
   }
   componentDidMount() {
@@ -33,16 +41,26 @@ class Order extends React.Component {
 
   getOrderData = async () => {
 
-    const response = await getOrders()
-    if (response.status !== 200) {
-      message.error("获取订单失败！")
+    this.handleLoading()
+    try {
+      const response = await getOrders()
+      if (response.status !== 200) {
+        message.error("获取订单列表失败！")
+      }
+      this.setState({
+        orders: response.data
+      })
+    } catch (e) {
+      message.error("服务器端连接失败！")
     }
-    this.setState({
-      orders: response.data
-    })
-    console.log(this.state)
+    this.handleLoading()
   }
 
+  handleLoading = () => {
+    this.setState({
+      isloading: !this.state.isloading
+    })
+  }
 
 
   render() {
@@ -81,9 +99,9 @@ class Order extends React.Component {
     ]
     return (
       <div className='order'>
-        <Space >
+        <Spin spinning={this.state.isloading} >
           <Table style={{ width: '750px' }} dataSource={this.state.orders} columns={columns}></Table>
-        </Space>
+        </Spin>
       </div>
     )
   }
